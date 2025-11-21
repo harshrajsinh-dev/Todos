@@ -100,19 +100,19 @@ const UpdateUser = async (req, res) => {
     } catch (error) {
         res.json({ success: false, message: "Error updating User", error: error.message });
     }
-};  
+};
 
 // Delete User
 const DeleteUser = async (req, res) => {
     try {
         const id = parseInt(req.params.id);
-8        // NOTE: Your original code had `userid`. The schema has `userId`. I've corrected it.
+        8        // NOTE: Your original code had `userid`. The schema has `userId`. I've corrected it.
         const deletedUser = await Usermodel.findOneAndDelete({ userId: id });
 
         if (!deletedUser) {
             return res.json({ success: false, message: "User not found" });
         }
-
+        console.log("Every thing worked fine ")
         res.json({ success: true, message: "User deleted", deletedUser });
     } catch (error) {
         res.json({ success: false, message: "Error deleting User", error: error.message });

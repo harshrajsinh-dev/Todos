@@ -1,8 +1,7 @@
 import { configDotenv } from "dotenv"
 import express from "express"
-import connectDb from "./ConnectDb.js"
+import connectDb from "./Config/ConnectDb.js"
 import UserRouter from "./Routes/UserRouter.js"
-import bodyParser from "body-parser"
 
 const app = express()
 
