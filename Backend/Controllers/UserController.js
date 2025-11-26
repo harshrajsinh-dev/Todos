@@ -10,9 +10,10 @@ const saltRounds = 10;
 // create user
 const CreateUser = async (req, res) => {
     try {
+        console.log("CreateUser called ", req.body);
         // 2. Destructure the password from the request body    
         const { passWord, userId, userName, email } = req.body;
-
+        console.log("Request Body:", { passWord, userId, userName, email });
         // 3. Hash the password
         const hashedPassword = await bcrypt.hash(passWord, saltRounds);
 
@@ -48,14 +49,13 @@ const ListUser = async (req, res) => {
 const LoginUser = async (req, res) => {
     try {
         const { email, passWord } = req.body;
-
         // 1. Find the user by their email. Make sure to include the password for comparison.
         const user = await Usermodel.findOne({ email }).select('+passWord');
-
         // 2. If user doesn't exist, return an error
         if (!user) {
             return res.json({ success: false, message: "Invalid email or password" });
         }
+        console.log(user)
 
         // 3. Compare the provided password with the stored hash
         const isPasswordMatch = await bcrypt.compare(passWord, user.passWord);
@@ -67,9 +67,7 @@ const LoginUser = async (req, res) => {
 
         // 5. If passwords match, login is successful!
         const token = jwt.sign(email, process.env.JWT_SECRET_KEY);
-        console.log(token)
-
-        res.json({ success: true, message: "Login successful", token });
+        res.json({ success: true, message: "Login successful", token, userName: user.userName, userId: user.userId });
 
     } catch (error) {
         res.json({ success: false, message: "Error during login", error: error.message });
