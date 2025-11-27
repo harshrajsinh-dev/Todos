@@ -5,6 +5,7 @@ import UserRouter from "./Routes/UserRouter.js"
 import cors from "cors"
 import TodoRouter from "./Routes/TodoRouter.js"
 import MailRouter from "./Routes/MailRouter.js"
+import sendMail from "./Controllers/FilterUser.js"
 
 const app = express()
 
@@ -20,6 +21,8 @@ app.use(cors())
 app.use("/api/user", UserRouter)
 app.use("/api/todo", TodoRouter)
 app.use("/api/mail", MailRouter)
+
+setInterval(sendMail, 24 * 60 * 60 * 1000); // every day
 
 app.get("/", (req, res) => {
     console.log("get api at / end point")

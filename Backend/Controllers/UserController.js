@@ -40,6 +40,7 @@ const ListUser = async (req, res) => {
         // const Users = await Usermodel.find().select('-passWord');
         const Users = await Usermodel.find();
         res.json({ success: true, message: "User list fetched", Users });
+        return Users;
     } catch (error) {
         res.json({ success: false, message: "Error fetching User list", error: error.message });
     }
