@@ -14,6 +14,7 @@ const CreateTodo = async (req, res) => {
 // List all todos
 const ListTodo = async (req, res) => {
     try {
+        console.log("created by harshraj")
         const todos = await TodoModel.find();
         res.json({ success: true, message: "Todo list fetched", todos });
     } catch (error) {
