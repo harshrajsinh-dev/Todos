@@ -72,7 +72,7 @@ const TodoForm = () => {
           <div>
             <label className="font-medium">Todo ID</label>
             <input
-              type="text"
+              type="number"
               {...register("todoId", { required: "Todo ID is required" })}
               className="w-full p-2 border rounded mt-1"
               placeholder="Unique ID"

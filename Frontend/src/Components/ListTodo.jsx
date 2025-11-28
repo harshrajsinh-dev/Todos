@@ -3,7 +3,7 @@ import { SiteContext } from '../Context/SiteContext';
 
 const ListTodo = () => {
     const { allTodo } = React.useContext(SiteContext);
-    console.log(allTodo)
+    // console.log(allTodo)
     return (
         <div>
             {
