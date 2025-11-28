@@ -1,30 +1,48 @@
 import axios from "axios";
-import React from "react";
+import React, { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
+import { SiteContext } from "../Context/SiteContext";
 
 const TodoForm = () => {
   const navigation = useNavigate();
-
+  const { setAllTodo } = useContext(SiteContext)
   const { register, handleSubmit, formState: { errors } } = useForm();
 
+  // const onSubmit = (data) => {
+  //   // console.log("Todo Data:", data);
+  //   axios.post(`${import.meta.env.VITE_BASE_URL}api/todo/create`, data, {
+  //     headers: {
+  //       'Content-Type': 'application/json'
+  //     }
+  //   }
+  //   )
+  //     .then(function (response) {
+  //       console.log("Todo Created Successfully ", response);
+  //       navigation("/");
+  //     })
+  //     .catch(function (error) {
+  //       console.log(error);
+  //     });
+
+  //   console.log(data);
+  // };
+
   const onSubmit = (data) => {
-    // console.log("Todo Data:", data);
-    axios.post(`${import.meta.env.VITE_BASE_URL}api/todo/create`, data, {
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    }
-    )
-      .then(function (response) {
-        console.log("Todo Created Successfully ", response);
+    axios
+      .post(`${import.meta.env.VITE_BASE_URL}api/todo/create`, data, {
+        headers: { 'Content-Type': 'application/json' }
+      })
+      .then((response) => {
+
+        // ✅ VERY IMPORTANT LINE
+        setAllTodo(prev => [...prev, response.data.todo]);
+
         navigation("/");
       })
-      .catch(function (error) {
+      .catch((error) => {
         console.log(error);
       });
-
-    console.log(data);
   };
 
   return (
