@@ -4,8 +4,7 @@ export const SiteContext = createContext();
 
 const SiteContextProvider = ({ children }) => {
     const [allTodo, setAllTodo] = useState([])
-
-    useEffect(() => {
+    const fetchTodo = () => {
         axios.get(`${import.meta.env.VITE_BASE_URL}api/todo/list`)
             .then((response) => {
                 setAllTodo(response.data.todos);
@@ -13,7 +12,8 @@ const SiteContextProvider = ({ children }) => {
             .catch((error) => {
                 console.log("Error fetching todos: ", error);
             });
-    }, [])
+    }
+    useEffect(fetchTodo(), [])
 
     const values = {
         allTodo
