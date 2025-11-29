@@ -6,6 +6,8 @@ import cors from "cors"
 import TodoRouter from "./Routes/TodoRouter.js"
 import MailRouter from "./Routes/MailRouter.js"
 import sendMail from "./Controllers/FilterUser.js"
+import cron from "node-cron"
+import axios from "axios"
 
 const app = express()
 
@@ -23,6 +25,17 @@ app.use("/api/todo", TodoRouter)
 app.use("/api/mail", MailRouter)
 
 setInterval(sendMail, 24 * 60 * 60 * 1000); // every day
+
+
+// Schedule a task to run every 10 minutes
+cron.schedule('*/10 * * * *', async () => {
+    try {
+        await axios.get('https://todos-backend-dsea.onrender.com//ping'); // Replace with a lightweight endpoint
+        console.log('Pinged Render app to keep it awake.');
+    } catch (error) {
+        console.error('Error pinging Render app:', error);
+    }
+});
 
 app.get("/", (req, res) => {
     console.log("get api at / end point")

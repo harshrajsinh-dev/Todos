@@ -17,7 +17,7 @@ const ListTodo = () => {
                             <p>{todo.isCompleted ? <>completed</> : <>incomplete</>}</p>
                             <p>{todo.creationTime}</p>
                             <p>{todo.deadLine}</p>
-                            <hr />
+                            <hr />  
                         </div>
                     )
                 })
