@@ -30,7 +30,7 @@ setInterval(sendMail, 24 * 60 * 60 * 1000); // every day
 // Schedule a task to run every 10 minutes
 cron.schedule('*/10 * * * *', async () => {
     try {
-        await axios.get('https://todos-backend-dsea.onrender.com//ping'); // Replace with a lightweight endpoint
+        await axios.get('https://todos-backend-dsea.onrender.com/'); // Replace with a lightweight endpoint
         console.log('Pinged Render app to keep it awake.');
     } catch (error) {
         console.error('Error pinging Render app:', error);
