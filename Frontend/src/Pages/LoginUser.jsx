@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { SiteContext } from '../Context/SiteContext';
 
 const LoginUser = () => {
-    const navigation = useNavigate();
+        const navigation = useNavigate();
     const { register, handleSubmit, formState: { errors } } = useForm();
     console.log(import.meta.env.VITE_BASE_URL)
     useEffect(() => {

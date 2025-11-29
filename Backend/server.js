@@ -42,6 +42,6 @@ app.get("/", (req, res) => {
     res.send("api working")
 })
 
-app.listen(process.env.PORT, () => {
+app.listen(process.env.PORT, () => {    
     console.log("get api at / created by harshraj")
 })

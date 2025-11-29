@@ -46,8 +46,8 @@ const TodoForm = () => {
   };
 
   return (
-    <div className="h-screen flex justify-center items-center bg-gray-100">
-      <div className="w-[450px] p-6 bg-white rounded-xl shadow-lg">
+    <div className="h-screen flex justify-center items-center bg-gray-100 shadow-gray-500 absolute left-1/3">
+      <div className="w-[450px] p-6  rounded-xl shadow-lg">
         <h2 className="text-2xl font-bold text-center mb-4">Create Todo</h2>
 
         <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-4">

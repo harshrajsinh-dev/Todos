@@ -5,13 +5,13 @@ const ListTodo = () => {
     const { allTodo } = React.useContext(SiteContext);
     console.log(allTodo)
     return (
-        <div>
+        <div className='m-5 p-5 border-2 border-black'>
             {
                 allTodo && allTodo.map((todo) => {
                     console.log(todo)
                     return (
                         <div key={todo._id}>
-                            <h3>{todo.todoId}</h3>
+                            <h3 className='text-blue-500 text-2xl'>{todo.todoId}</h3>
                             <h3>{todo.todoHeading}</h3>
                             <p>{todo.todoBody}</p>
                             <p>{todo.isCompleted ? <>completed</> : <>incomplete</>}</p>
