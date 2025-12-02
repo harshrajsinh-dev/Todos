@@ -32,23 +32,22 @@ const LoginUser = () => {
         console.log(data);
     }
     return (
-        <div className='h-screen flex justify-center items-center bg-gray-200'>
-            <div className='w-1/3 p-5 bg-white rounded-lg hover:shadow-lg transition-all flex flex-col gap-6'>
+        <div className='h-screen flex justify-center items-center bg-white'>
+            <div className='w-1/3 p-5 bg-blue-100 rounded-lg hover:shadow-lg transition-all flex flex-col gap-6'>
                 <form onSubmit={handleSubmit((data) => {
                     console.log("Submitted");
                     handleClick(data);
                 })}>
 
-                    <div className="flex flex-col gap-4 ">
+                    <div className="flex flex-col gap-4 text-blue-900">
                         <input {...register('email', { required: true })} type="email" placeholder='User Email' className='border p-2 rounded-md' />
                         <input {...register('passWord', { required: true })} type="password" placeholder='User Password' className='border p-2 rounded-md' />
                     </div>
 
                     <div className="lower flex justify-center mt-5">
                         <button
-                            className='bg-gray-900 text-white hover:text-gray-900 hover:bg-white border-white hover:border-gray-900 border py-2 px-7 rounded-md cursor-pointer transition-all'
-                        >
-                            LoginUser
+                            className='bg-blue-900 text-blue-200 hover:text-blue-900 hover:bg-blue-100 border-blue-900 hover:border-blue-900 border py-2 px-7 rounded-md cursor-pointer transition-all'>
+                            Login User
                         </button>
                     </div>
                 </form>

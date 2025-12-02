@@ -47,7 +47,7 @@ const RegisterUser = () => {
 
           <div className="lower flex justify-center">
             <button
-              className='bg-gray-900 text-white hover:text-gray-900 hover:bg-white border-white hover:border-gray-900 border py-2 px-7 rounded-md cursor-pointer transition-all'
+              className='bg-blue-900 text-white hover:text-gray-900 hover:bg-white border-white hover:border-gray-900 border py-2 px-7 rounded-md cursor-pointer transition-all'
             >
               RegisterUser
             </button>
